@@ -73,11 +73,12 @@ in {
     $crust = 0xff${palette.crust}
 
     # See https://wiki.hyprland.org/Configuring/Monitors/
-    # Configure your displays
-    monitor=,preferred,auto,auto
-
-    # Set primary display (modify as needed)
-    # monitor=DP-1,2560x1440@144,0x0,1
+    # Import dynamically generated monitor configuration
+    source = ~/.config/hypr/monitors.conf
+    
+    # Fallback monitor config if the dynamic config fails
+    # This will be overridden by monitors.conf if it exists
+    monitor=,preferred,auto,1
 
     # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
     input {
@@ -272,5 +273,51 @@ in {
     # Start clipboard daemon
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
+
+    # Add monitor handling keybinds
+    bind = $mainMod SHIFT, M, exec, ~/.config/hypr/monitor-handler.sh
+    
+    # Execute the monitor handler script on startup
+    exec-once = ~/.config/hypr/monitor-handler.sh
+    
+    # Handle monitor hotplug events
+    exec-once = ~/.config/hypr/monitor-hotplug.sh
   '';
+  
+  # Install monitor handling scripts
+  xdg.configFile."hypr/monitor-handler.sh" = {
+    source = ./monitor-handler.sh;
+    executable = true;
+  };
+  
+  # Create a script to handle monitor hotplug events
+  xdg.configFile."hypr/monitor-hotplug.sh" = {
+    text = ''
+      #!/usr/bin/env bash
+      
+      # This script handles monitor hotplug events
+      
+      # Install inotify-tools if needed
+      if ! command -v inotifywait &> /dev/null; then
+        echo "inotify-tools not found, installing..."
+        nix-env -iA nixos.inotify-tools || exit 1
+      fi
+      
+      # Watch for monitor changes using udevadm
+      while true; do
+        # Monitor drm (direct rendering manager) events
+        udevadm monitor --subsystem-match=drm | grep -i "changed" --line-buffered | while read -r line; do
+          echo "Detected monitor change: $line"
+          sleep 2  # Give the system time to recognize the monitor
+          
+          # Run the monitor handler script
+          ~/.config/hypr/monitor-handler.sh
+        done
+        
+        # If udevadm exits, wait and restart
+        sleep 5
+      done
+    '';
+    executable = true;
+  };
 } 
