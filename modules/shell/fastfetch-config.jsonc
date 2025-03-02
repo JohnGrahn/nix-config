@@ -1,0 +1,48 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "small",
+        "color": {
+            "1": "magenta", // Using magenta to match Catppuccin Mocha mauve color
+            "2": "blue"     // Using blue to match Catppuccin Mocha blue color
+        }
+    },
+    "display": {
+        "separator": "  ",
+        "keyWidth": 10,
+        "color": {
+            "keys": "magenta",     // Use mauve color for keys
+            "title": "blue"        // Use blue for title
+        }
+    },
+    "modules": [
+        {
+            "type": "title",
+            "color": {
+                "user": "green",    // Use green for username
+                "at": "magenta",    // Use mauve for the @ symbol
+                "host": "blue"      // Use blue for hostname
+            }
+        },
+        {
+            "type": "separator",
+            "string": " "
+        },
+        { "type": "os" },
+        { "type": "kernel" },
+        { "type": "packages" },
+        { "type": "shell" },
+        { "type": "de" },
+        { "type": "wm" },
+        { "type": "terminal" },
+        { "type": "memory" },
+        { "type": "cpu" },
+        { "type": "gpu" },
+        { "type": "uptime" },
+        {
+            "type": "colors",
+            "symbol": "circle",
+            "paddingLeft": 2
+        }
+    ]
+} 

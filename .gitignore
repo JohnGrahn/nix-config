@@ -1,0 +1,58 @@
+# Nix build outputs
+result
+result-*
+
+# Nix store paths and garbage collection roots
+.nix-gc-roots/
+
+# Directory created by nix-direnv
+.direnv/
+
+# Directory created for flakes
+.tmp/
+
+# Nix automatic garbage collection lock 
+.gc.lock
+
+# Backup files
+*.bak
+*~
+*.swp
+*.swo
+
+# MacOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux specific files
+.directory
+.Trash-*
+
+# Editor/IDE specific
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Hardware configuration (contains sensitive information)
+hardware-configuration.nix
+
+# Local machine specific configuration
+# Uncomment if you want to ignore host-specific files
+# hosts/*/hardware-configuration.nix
+
+# Logs
+*.log
+
+# Personal credentials or secrets
+# Be careful to not commit files with sensitive information
+secrets/
+secrets.nix
+private.nix 
+
+# Cursor rules
+.cursorrules
+
+# Progress markdown file
+PROGRESS.md
