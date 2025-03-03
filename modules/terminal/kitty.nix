@@ -49,11 +49,13 @@
       detect_urls = "yes";
 
       # Keyboard mapping
-      map = "ctrl+shift+v paste_from_clipboard";
-      map = "ctrl+shift+c copy_to_clipboard";
-      map = "ctrl+shift+equal change_font_size all +1.0";
-      map = "ctrl+shift+minus change_font_size all -1.0";
-      map = "ctrl+shift+backspace change_font_size all 0";
+      map = [
+        "ctrl+shift+v paste_from_clipboard"
+        "ctrl+shift+c copy_to_clipboard"
+        "ctrl+shift+equal change_font_size all +1.0"
+        "ctrl+shift+minus change_font_size all -1.0"
+        "ctrl+shift+backspace change_font_size all 0"
+      ];
       
       # Performance settings
       repaint_delay = "10";

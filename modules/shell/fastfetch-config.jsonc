@@ -9,7 +9,9 @@
     },
     "display": {
         "separator": "  ",
-        "keyWidth": 10,
+        "key": {
+            "width": 10
+        },
         "color": {
             "keys": "magenta",     // Use mauve color for keys
             "title": "blue"        // Use blue for title

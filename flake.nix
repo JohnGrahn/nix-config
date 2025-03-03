@@ -32,7 +32,7 @@
     let
       system = "x86_64-linux";
       hostname = "nixos";
-      username = "user"; # Change to your desired username
+      username = "jack"; # Change to your desired username
       
       # Create specialized pkgs with overlays
       pkgs = import nixpkgs {
