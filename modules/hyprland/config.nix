@@ -37,7 +37,7 @@ let
   browser = "brave";
   fileManager = "dolphin";
   menu = "rofi -show drun";
-  
+
   # Define modifier key for keybindings
   mod = "SUPER"; # Windows key / Command key
 
@@ -75,7 +75,7 @@ in {
     # See https://wiki.hyprland.org/Configuring/Monitors/
     # Import dynamically generated monitor configuration
     source = ~/.config/hypr/monitors.conf
-    
+
     # Fallback monitor config if the dynamic config fails
     # This will be overridden by monitors.conf if it exists
     monitor=,preferred,auto,1
@@ -194,13 +194,13 @@ in {
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
     bind = $mainMod, B, exec, ${browser}
-    
+
     # Move focus with mainMod + arrow keys
     bind = $mainMod, left, movefocus, l
     bind = $mainMod, right, movefocus, r
     bind = $mainMod, up, movefocus, u
     bind = $mainMod, down, movefocus, d
-    
+
     # Move windows with mainMod + SHIFT + arrow keys
     bind = $mainMod SHIFT, left, movewindow, l
     bind = $mainMod SHIFT, right, movewindow, r
@@ -238,26 +238,26 @@ in {
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
-    
+
     # Volume control
     bind = , XF86AudioRaiseVolume, exec, pamixer -i 5
     bind = , XF86AudioLowerVolume, exec, pamixer -d 5
     bind = , XF86AudioMute, exec, pamixer -t
-    
+
     # Brightness control
     bind = , XF86MonBrightnessUp, exec, brightnessctl set +5%
     bind = , XF86MonBrightnessDown, exec, brightnessctl set 5%-
-    
+
     # Take a screenshot with the specified area and copy to clipboard and save to ~/Pictures/Screenshots
     bind = $mainMod, S, exec, slurp | grim -g - ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
     bind = $mainMod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy
-    
+
     # Toggle Waybar
     bind = $mainMod, W, exec, killall -SIGUSR1 waybar
-    
+
     # Clipboard manager keybindings
     bind = $mainMod, C, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
-    
+
     # Start notification daemon if not started
     exec-once = dunst
 
@@ -276,33 +276,33 @@ in {
 
     # Add monitor handling keybinds
     bind = $mainMod SHIFT, M, exec, ~/.config/hypr/monitor-handler.sh
-    
+
     # Execute the monitor handler script on startup
     exec-once = ~/.config/hypr/monitor-handler.sh
-    
+
     # Handle monitor hotplug events
     exec-once = ~/.config/hypr/monitor-hotplug.sh
   '';
-  
+
   # Install monitor handling scripts
   xdg.configFile."hypr/monitor-handler.sh" = {
     source = ./monitor-handler.sh;
     executable = true;
   };
-  
+
   # Create a script to handle monitor hotplug events
   xdg.configFile."hypr/monitor-hotplug.sh" = {
     text = ''
       #!/usr/bin/env bash
-      
+
       # This script handles monitor hotplug events
-      
+
       # Install inotify-tools if needed
       if ! command -v inotifywait &> /dev/null; then
         echo "inotify-tools not found, installing..."
         nix-env -iA nixos.inotify-tools || exit 1
       fi
-      
+
       # Watch for monitor changes using udevadm
       while true; do
         # Monitor drm (direct rendering manager) events
@@ -320,4 +320,4 @@ in {
     '';
     executable = true;
   };
-} 
+}

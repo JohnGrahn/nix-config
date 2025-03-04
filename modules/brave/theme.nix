@@ -43,18 +43,18 @@ in {
       }
     '';
   };
-  
+
   # Additional theming - for New Tab page and startup settings
   programs.chromium.extraOpts = {
     # New Tab settings
     HomepageLocation = "brave://newtab";
     NewTabPageLocation = "brave://newtab";
-    
+
     # Theme settings - as much as we can set via Home Manager
     # Note: This doesn't fully implement Catppuccin Mocha, which is why we also use the extension
     BrowserThemeColor = colors.base;
-    
+
     # Restore session
     RestoreOnStartup = 1; # Restore the previous session
   };
-} 
+}

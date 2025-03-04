@@ -15,16 +15,16 @@
 
   # Set your hostname
   networking.hostName = hostname;
-  
+
   # Enable networking
   networking.networkmanager.enable = true;
   # Disable potentially conflicting services
-  networking.useDHCP = false;  # Let NetworkManager handle DHCP
+  networking.useDHCP = false; # Let NetworkManager handle DHCP
   # Disable systemd-networkd if it might be enabled by default
   systemd.services.systemd-networkd.enable = false;
 
   # Set your time zone
-  time.timeZone = "America/New_York";  # Change to your timezone
+  time.timeZone = "America/New_York"; # Change to your timezone
 
   # Configure console keymap if needed
   # console.keyMap = "us";
@@ -53,7 +53,7 @@
 
   # Enable the X11 windowing system for compatibility
   services.xserver.enable = true;
-  
+
   # Enable SDDM display manager (login screen)
   services.displayManager.sddm = {
     enable = true;
@@ -63,7 +63,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
-  
+
   # Enable sound with PipeWire
   sound.enable = true;
   # Disable PulseAudio
@@ -74,13 +74,13 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse.enable = true;  # PulseAudio compatibility
-    jack.enable = true;   # JACK compatibility
-    wireplumber.enable = true;  # Session manager
+    pulse.enable = true; # PulseAudio compatibility
+    jack.enable = true; # JACK compatibility
+    wireplumber.enable = true; # Session manager
   };
 
   # Required for certain apps that check for these groups
-  security.rtkit.enable = true;  # Realtime scheduling for audio
+  security.rtkit.enable = true; # Realtime scheduling for audio
 
   # Enable touchpad support (for laptops)
   services.xserver.libinput.enable = true;
@@ -88,14 +88,10 @@
   # XDG Portal (for screen sharing, file dialogs, etc.)
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    extraPortals =
+      [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
     config = {
-      common = {
-        default = "*";
-      };
+      common = { default = "*"; };
       # Ensure PipeWire is used for screencast 
       screencast = {
         enable = true;
@@ -105,14 +101,10 @@
   };
 
   # Enable proper cursor theme support
-  environment.variables = {
-    XCURSOR_SIZE = "24";
-  };
-  
+  environment.variables = { XCURSOR_SIZE = "24"; };
+
   # Set electron apps to use wayland
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   # Define a user account
   users.users.${username} = {
@@ -138,17 +130,17 @@
     git
     vim
     neovim
-    
+
     # Wayland utilities
     wl-clipboard
     grim # Screenshot utility
     slurp # Screen area selection
-    
+
     # PipeWire utilities
-    pavucontrol    # PulseAudio volume control (works with PipeWire)
-    easyeffects    # Audio effects for PipeWire
-    helvum         # PipeWire patchbay
-    qpwgraph       # Another GUI for PipeWire connections
+    pavucontrol # PulseAudio volume control (works with PipeWire)
+    easyeffects # Audio effects for PipeWire
+    helvum # PipeWire patchbay
+    qpwgraph # Another GUI for PipeWire connections
   ];
 
   # Enable OpenSSH
@@ -175,13 +167,9 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-      };
-    };
+    settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
   };
 
   # Enable blueman for Bluetooth management
   services.blueman.enable = true;
-} 
+}

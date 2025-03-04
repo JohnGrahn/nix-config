@@ -2,10 +2,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./extensions.nix
-    ./settings.nix
-    ./flags.nix
-    ./theme.nix
-  ];
-} 
+  imports = [ ./extensions.nix ./settings.nix ./flags.nix ./theme.nix ];
+}

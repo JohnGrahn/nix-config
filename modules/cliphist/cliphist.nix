@@ -3,43 +3,40 @@
 
 {
   # Install cliphist package
-  home.packages = with pkgs; [
-    cliphist
-    wl-clipboard
-  ];
-  
+  home.packages = with pkgs; [ cliphist wl-clipboard ];
+
   # Create a directory for cliphist history
   home.file.".local/share/cliphist/.keep".text = "";
-  
+
   # Setup autostart for cliphist
   # This is also in the Hyprland config but adding here for redundancy
   xdg.configFile."hypr/cliphist.sh" = {
     executable = true;
     text = ''
       #!/usr/bin/env bash
-      
+
       # Ensure we have a directory to store cliphist data
       mkdir -p "$HOME/.local/share/cliphist"
-      
+
       # Start wl-paste tracking for text items
       wl-paste --type text --watch cliphist store &
-      
+
       # Start wl-paste tracking for image items
       wl-paste --type image --watch cliphist store &
-      
+
       # Start wl-paste tracking for all items (optional)
       # wl-paste --watch cliphist store &
     '';
   };
-  
+
   # Create a script to show cliphist in rofi with Catppuccin Mocha theming
   home.file.".local/bin/rofi-cliphist" = {
     executable = true;
     text = ''
       #!/usr/bin/env bash
-      
+
       # A script to integrate cliphist with rofi
-      
+
       case $1 in
         "copy")
           cliphist list | rofi -dmenu -theme ~/.config/rofi/cliphist.rasi -p "Copy:" | cliphist decode | wl-copy
@@ -57,7 +54,7 @@
       esac
     '';
   };
-  
+
   # Rofi theme specifically for cliphist
   xdg.configFile."rofi/cliphist.rasi" = {
     text = ''
@@ -166,23 +163,22 @@
       }
     '';
   };
-  
+
   # Add to systemd user services to ensure it starts reliably
   systemd.user.services.cliphist = {
     Unit = {
       Description = "Clipboard history service";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
     };
-    
+
     Service = {
-      ExecStart = "${pkgs.bash}/bin/bash ${config.xdg.configHome}/hypr/cliphist.sh";
+      ExecStart =
+        "${pkgs.bash}/bin/bash ${config.xdg.configHome}/hypr/cliphist.sh";
       Restart = "always";
       RestartSec = 5;
     };
-    
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
+
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
-} 
+}

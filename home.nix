@@ -27,7 +27,7 @@
   ];
 
   # Ensure Hyprland's systemd integration for proper environment variables
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
+  wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 
   # Configure cursor theme for both X11 and Wayland
   home.pointerCursor = {
@@ -89,4 +89,4 @@
     # Force firefox to use wayland
     MOZ_ENABLE_WAYLAND = "1";
   };
-} 
+}

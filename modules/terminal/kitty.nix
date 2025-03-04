@@ -5,10 +5,10 @@
   # Enable Kitty terminal
   programs.kitty = {
     enable = true;
-    
+
     # Catppuccin Mocha theme settings for Kitty terminal
     theme = "Catppuccin-Mocha";
-    
+
     # Basic settings
     settings = {
       # Font configuration
@@ -17,31 +17,32 @@
       italic_font = "JetBrainsMono Nerd Font Italic";
       bold_italic_font = "JetBrainsMono Nerd Font Bold Italic";
       font_size = "12.0";
-      
+
       # Window settings
       window_padding_width = "8";
       hide_window_decorations = "yes";
       confirm_os_window_close = "0";
       background_opacity = "0.95";
-      
+
       # Cursor settings
       cursor_shape = "beam";
       cursor_blink_interval = "0.5";
       cursor_stop_blinking_after = "15.0";
-      
+
       # Tab settings
       tab_bar_style = "powerline";
       tab_powerline_style = "slanted";
-      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
-      
+      tab_title_template =
+        "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+
       # Keep working directory when creating new windows
       copy_on_select = "clipboard";
       strip_trailing_spaces = "smart";
-      
+
       # Enable terminal bell
       enable_audio_bell = "no";
       visual_bell_duration = "0.0";
-      
+
       # URL handling
       url_style = "curly";
       open_url_with = "default";
@@ -56,24 +57,24 @@
         "ctrl+shift+minus change_font_size all -1.0"
         "ctrl+shift+backspace change_font_size all 0"
       ];
-      
+
       # Performance settings
       repaint_delay = "10";
       sync_to_monitor = "yes";
-      
+
       # Terminal bell
       window_alert_on_bell = "yes";
       bell_on_tab = "yes";
-      
+
       # Shell integration
       shell_integration = "enabled";
     };
-    
+
     # Additional Catppuccin Mocha theme colors that may not be in the built-in theme
     extraConfig = ''
       # Catppuccin Mocha additional colors
       # Colors extracted directly from https://github.com/catppuccin/kitty/blob/main/themes/mocha.conf
-      
+
       # The basic colors
       foreground              #CDD6F4
       background              #1E1E2E
@@ -145,4 +146,4 @@
       color15 #A6ADC8
     '';
   };
-} 
+}

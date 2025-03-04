@@ -33,13 +33,13 @@
       system = "x86_64-linux";
       hostname = "nixos";
       username = "jack"; # Change to your desired username
-      
+
       # Create specialized pkgs with overlays
       pkgs = import nixpkgs {
         inherit system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [];
+          permittedInsecurePackages = [ ];
         };
       };
 
@@ -56,7 +56,8 @@
             ./hosts/configuration.nix
 
             # Include Home Manager as a NixOS module
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
@@ -64,9 +65,7 @@
                 inherit username;
                 inherit hostname;
               };
-              home-manager.users.${username} = {
-                imports = [ ./home.nix ];
-              };
+              home-manager.users.${username} = { imports = [ ./home.nix ]; };
             }
 
             # Make Hyprland available to NixOS configuration
@@ -88,17 +87,15 @@
 
       # Home Manager standalone configuration 
       # (for use with standalone home-manager, not with NixOS)
-      homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit hostname;
+      homeConfigurations."${username}@${hostname}" =
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit username;
+            inherit hostname;
+          };
+          modules = [ ./home.nix hyprland.homeManagerModules.default ];
         };
-        modules = [
-          ./home.nix
-          hyprland.homeManagerModules.default
-        ];
-      };
     };
-} 
+}

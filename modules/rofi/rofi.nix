@@ -5,10 +5,10 @@
   # Enable rofi
   programs.rofi = {
     enable = true;
-    
+
     # Use the wayland version
     package = pkgs.rofi-wayland;
-    
+
     # Extra configuration
     extraConfig = {
       modi = "drun,run,window,ssh";
@@ -22,11 +22,11 @@
       display-ssh = "   SSH ";
       sidebar-mode = true;
     };
-    
+
     # Catppuccin Mocha theme
     theme = ./theme.rasi;
   };
-  
+
   # Create the Catppuccin Mocha theme file for Rofi
   xdg.configFile."rofi/theme.rasi" = {
     text = ''
@@ -149,9 +149,9 @@
       }
     '';
   };
-  
+
   # Create additional Rofi scripts for convenience
-  
+
   # Power menu script
   home.file.".local/bin/rofi-power-menu" = {
     executable = true;
@@ -188,7 +188,7 @@
       fi
     '';
   };
-  
+
   # Power menu theme
   xdg.configFile."rofi/power-menu.rasi" = {
     text = ''
@@ -304,4 +304,4 @@
       }
     '';
   };
-} 
+}

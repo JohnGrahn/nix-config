@@ -12,17 +12,12 @@
       position = "top";
       height = 30;
       spacing = 4;
-      
-      modules-left = [
-        "hyprland/workspaces"
-        "hyprland/mode"
-        "hyprland/window"
-      ];
-      
-      modules-center = [
-        "clock"
-      ];
-      
+
+      modules-left =
+        [ "hyprland/workspaces" "hyprland/mode" "hyprland/window" ];
+
+      modules-center = [ "clock" ];
+
       modules-right = [
         "pulseaudio"
         "network"
@@ -32,7 +27,7 @@
         "battery"
         "tray"
       ];
-      
+
       # Module configuration
       "hyprland/workspaces" = {
         format = "{icon}";
@@ -51,34 +46,34 @@
         on-click = "activate";
         all-outputs = true;
       };
-      
+
       tray = {
         icon-size = 21;
         spacing = 10;
       };
-      
+
       clock = {
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        tooltip-format = ''
+          <big>{:%Y %B}</big>
+          <tt><small>{calendar}</small></tt>'';
         format-alt = "{:%Y-%m-%d}";
         format = "{:%H:%M}";
         interval = 1;
       };
-      
+
       cpu = {
         format = "{usage}% ";
         tooltip = false;
       };
-      
-      memory = {
-        format = "{}% ";
-      };
-      
+
+      memory = { format = "{}% "; };
+
       temperature = {
         critical-threshold = 80;
         format = "{temperatureC}°C {icon}";
-        format-icons = ["" "" ""];
+        format-icons = [ "" "" "" ];
       };
-      
+
       battery = {
         states = {
           good = 95;
@@ -89,9 +84,9 @@
         format-charging = "{capacity}% ";
         format-plugged = "{capacity}% ";
         format-alt = "{time} {icon}";
-        format-icons = ["" "" "" "" ""];
+        format-icons = [ "" "" "" "" "" ];
       };
-      
+
       network = {
         format-wifi = "{essid} ({signalStrength}%) ";
         format-ethernet = "Connected  ";
@@ -100,7 +95,7 @@
         format-disconnected = "Disconnected ⚠";
         on-click = "nm-connection-editor";
       };
-      
+
       pulseaudio = {
         format = "{volume}% {icon} {format_source}";
         format-bluetooth = "{volume}% {icon} {format_source}";
@@ -115,7 +110,7 @@
           phone = "";
           portable = "";
           car = "";
-          default = ["" "" ""];
+          default = [ "" "" "" ];
         };
         on-click = "pavucontrol";
       };
@@ -125,7 +120,7 @@
   # Create Waybar style.css with Catppuccin Mocha theming
   xdg.configFile."waybar/style.css".text = ''
     /* Catppuccin Mocha Theme for Waybar */
-    
+
     /* Import Catppuccin colors */
     @define-color base   #1e1e2e;
     @define-color mantle #181825;
@@ -420,4 +415,4 @@
         background-color: @red;
     }
   '';
-} 
+}

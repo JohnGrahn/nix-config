@@ -11,33 +11,35 @@
       PasswordManagerEnabled = false;
       SpellcheckEnabled = true;
       SpellcheckLanguage = [ "en-US" ];
-      
+
       # Features to enable/disable
       HardwareAccelerationModeEnabled = true;
       BookmarkBarEnabled = true;
-      
+
       # Default search engine - Set to Brave Search
       DefaultSearchProviderEnabled = true;
       DefaultSearchProviderName = "Brave Search";
-      DefaultSearchProviderSearchURL = "https://search.brave.com/search?q={searchTerms}";
-      DefaultSearchProviderSuggestURL = "https://search.brave.com/api/suggest?q={searchTerms}";
-      
+      DefaultSearchProviderSearchURL =
+        "https://search.brave.com/search?q={searchTerms}";
+      DefaultSearchProviderSuggestURL =
+        "https://search.brave.com/api/suggest?q={searchTerms}";
+
       # Additional privacy settings
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       BuiltInDnsClientEnabled = false;
       MetricsReportingEnabled = false;
       SearchSuggestEnabled = true;
-      
+
       # Security settings
       SafeBrowsingEnabled = true;
       SafeBrowsingExtendedReportingEnabled = false;
-      
+
       # Performance settings
       PrefetchingEnabled = true;
     };
   };
-  
+
   # Create a README file with setup instructions
   home.file.".local/share/brave/README.md" = {
     text = ''
@@ -62,10 +64,10 @@
       ## Performance Flags
       Check `~/.config/brave-flags.conf` for recommended flags.
       Enter `brave://flags` in the URL bar and search for each flag to enable it.
-      
+
       ## Default Search Engine
       The default search engine is set to Brave Search. If this doesn't apply automatically,
       you can manually set it in Settings > Search engine > Search engine used in the address bar.
     '';
   };
-} 
+}

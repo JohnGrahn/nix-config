@@ -5,7 +5,7 @@
   # Enable Fish shell
   programs.fish = {
     enable = true;
-    
+
     # Fish shell plugins
     plugins = [
       # Syntax highlighting with Catppuccin Mocha theme
@@ -14,7 +14,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "catppuccin";
           repo = "fish";
-          rev = "8d0b07ad927f976708a432735d23c869559d0205"; # Replace with the latest commit
+          rev =
+            "8d0b07ad927f976708a432735d23c869559d0205"; # Replace with the latest commit
           sha256 = "sha256-Dc/zdxfzAUM5RDdSu0w6SlEpQ0XvwRl7PTt+aGCPHZI=";
         };
       }
@@ -49,7 +50,7 @@
         };
       }
     ];
-    
+
     # Shell aliases
     shellAliases = {
       # General aliases
@@ -58,7 +59,7 @@
       lla = "ls -la";
       lt = "ls --tree";
       cat = "bat --paging=never";
-      
+
       # Git aliases
       g = "git";
       ga = "git add";
@@ -68,11 +69,11 @@
       gp = "git push";
       gl = "git pull";
       gco = "git checkout";
-      
+
       # System aliases
       sc = "systemctl";
       jc = "journalctl";
-      
+
       # NixOS specific aliases
       nixs = "sudo nixos-rebuild switch";
       nixb = "sudo nixos-rebuild boot";
@@ -81,23 +82,23 @@
       nix-clean = "sudo nix-collect-garbage -d && sudo nixos-rebuild switch";
       hmswitch = "home-manager switch";
       hmbuild = "home-manager build";
-      hmgc = "home-manager expire-generations \"-7 days\"";
-      
+      hmgc = ''home-manager expire-generations "-7 days"'';
+
       # Editor aliases
       vim = "nvim";
       vi = "nvim";
-      
+
       # Misc aliases
       weather = "curl wttr.in";
       myip = "curl ifconfig.me";
-      fetch = "fastfetch";  # Alias for fastfetch
-      
+      fetch = "fastfetch"; # Alias for fastfetch
+
       # Confirm before overwriting
       cp = "cp -i";
       mv = "mv -i";
       rm = "rm -i";
     };
-    
+
     # Fish shell functions
     functions = {
       # Fish greeting
@@ -112,12 +113,12 @@
         end
         echo ""
       '';
-      
+
       # Create and enter directory
       mkcd = ''
         mkdir -p $argv && cd $argv
       '';
-      
+
       # Extract archives
       extract = ''
         set -l file $argv[1]
@@ -155,55 +156,55 @@
         end
       '';
     };
-    
+
     # Custom fish shell initialization
     interactiveShellInit = ''
       # Set Catppuccin Mocha theme
       fish_config theme choose "Catppuccin Mocha"
-      
+
       # Enable vi mode
       fish_vi_key_bindings
-      
+
       # Use terminal colors
       set -g fish_term24bit 1
-      
+
       # Disable fish default greeting
       set -g fish_greeting
-      
+
       # Enable starship prompt if installed
       if type -q starship
         starship init fish | source
       end
-      
+
       # Load direnv if installed
       if type -q direnv
         direnv hook fish | source
       end
-      
+
       # Load zoxide if installed
       if type -q zoxide
         zoxide init fish | source
       end
     '';
   };
-  
+
   # Configure Starship prompt with Catppuccin Mocha theming
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
-    
+
     settings = {
       add_newline = true;
-      
+
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[✗](bold red)";
         vicmd_symbol = "[V](bold green)";
       };
-      
+
       # Catppuccin Mocha colors
       palette = "catppuccin_mocha";
-      
+
       palettes.catppuccin_mocha = {
         rosewater = "#f5e0dc";
         flamingo = "#f2cdcd";
@@ -234,12 +235,12 @@
       };
     };
   };
-  
+
   # Configuration for fzf (fuzzy finder)
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
-    
+
     # Use Catppuccin Mocha colors for fzf
     colors = {
       "bg+" = "#313244";
@@ -255,7 +256,7 @@
       "prompt" = "#cba6f7";
       "hl+" = "#f38ba8";
     };
-    
+
     # FZF default options
     defaultOptions = [
       "--height 40%"
@@ -266,7 +267,7 @@
       "--padding=1"
     ];
   };
-  
+
   # Add fastfetch configuration with Catppuccin Mocha colors
   xdg.configFile."fastfetch/config.jsonc".source = ./fastfetch-config.jsonc;
-} 
+}
