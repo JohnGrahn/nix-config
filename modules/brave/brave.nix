@@ -21,41 +21,6 @@
 
     # Command line arguments
     commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
-
-    # Browser settings
-    settings = {
-      # Privacy settings
-      default_browser = true;
-      passwords_manager = false;
-      spellcheck.enabled = true;
-      spellcheck.languages = [ "en-US" ];
-
-      # Features to enable/disable
-      hardware_acceleration = true;
-      bookmarks.show_bookmarks_bar = true;
-
-      # Default search engine - Set to Brave Search
-      search.default_search_provider = {
-        enabled = true;
-        name = "Brave Search";
-        search_url = "https://search.brave.com/search?q={searchTerms}";
-        suggest_url = "https://search.brave.com/api/suggest?q={searchTerms}";
-      };
-
-      # Additional privacy settings
-      autofill.enabled = false;
-      autofill.credit_card_enabled = false;
-      dns_over_https.enabled = false;
-      metrics_reporting = false;
-      search.suggest_enabled = true;
-
-      # Security settings
-      safebrowsing.enabled = true;
-      safebrowsing.extended_reporting_enabled = false;
-
-      # Performance settings
-      prefetch.enabled = true;
-    };
   };
 
   # Create a README file with setup instructions
