@@ -141,6 +141,9 @@
     easyeffects # Audio effects for PipeWire
     helvum # PipeWire patchbay
     qpwgraph # Another GUI for PipeWire connections
+
+    # SPICE and QEMU guest agent
+    spice-vdagent # SPICE guest agent for better VM integration
   ];
 
   # Enable OpenSSH
@@ -172,4 +175,9 @@
 
   # Enable blueman for Bluetooth management
   services.blueman.enable = true;
+
+  # Enable SPICE and QEMU guest agent for VM integration
+  services.spice-vdagentd.enable =
+    true; # Enable SPICE agent for clipboard sharing
+  services.qemuGuest.enable = true; # Enable QEMU guest agent
 }

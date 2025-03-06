@@ -27,6 +27,7 @@
     go
     python3
     nixfmt # Nix formatter
+    nil # Nix language server
 
     # System tools
     htop

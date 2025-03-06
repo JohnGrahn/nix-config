@@ -33,6 +33,7 @@
 
       # JSON Formatter
       "bcjindcccaagfpapjjmafapmmgkkhgoa"
+
     ];
   };
 }
