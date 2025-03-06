@@ -1,4 +1,74 @@
-# NixOS Configuration with Hyprland and Home Manager
+# NixOS Configuration
+
+A NixOS configuration using flakes, Home Manager, and Hyprland with Catppuccin Mocha theming.
+
+## Fresh Installation Guide
+
+### 1. Initial Setup
+First, modify your fresh NixOS installation to include git:
+
+```bash
+# Edit the system configuration
+sudo nano /etc/nixos/configuration.nix
+```
+
+Add git to your system packages:
+```nix
+environment.systemPackages = with pkgs; [
+  git
+];
+```
+
+Apply the change:
+```bash
+sudo nixos-rebuild switch
+```
+
+### 2. Enable Flakes
+Enable flakes by editing `/etc/nixos/configuration.nix`:
+
+```nix
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+```
+
+Apply the change:
+```bash
+sudo nixos-rebuild switch
+```
+
+### 3. Clone and Install
+```bash
+# Create development directory
+mkdir -p ~/Development
+cd ~/Development
+
+# Clone the repository
+git clone https://github.com/yourusername/NixOS.git
+cd NixOS
+
+# Update username in flake.nix to match your system
+# Edit flake.nix and change:
+# username = "jack"; # to your actual username
+```
+
+### 4. Apply Configuration
+```bash
+# Apply the system configuration
+sudo nixos-rebuild switch --flake .#nixos
+
+# Apply the home-manager configuration
+home-manager switch --flake .#username@nixos
+```
+
+### 5. Post-Installation
+After installation:
+1. Log out and select Hyprland from your session manager
+2. If no display manager is installed, start Hyprland by running:
+   ```bash
+   Hyprland
+   ```
+
+## Configuration Details
 
 A complete NixOS configuration using flakes, Home Manager, and Hyprland with the Catppuccin Mocha theme.
 

@@ -4,9 +4,6 @@
 {
   # User packages to install
   home.packages = with pkgs; [
-    # Browser
-    brave
-
     # Text editors
     emacs # For installing doom-emacs on top later
     neovim

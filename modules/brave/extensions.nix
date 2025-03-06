@@ -2,38 +2,24 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Configure Brave through Home Manager's Chromium module - extensions section
+  # Configure Brave through Chromium module
   programs.chromium = {
     enable = true;
-    # Use Brave as the package instead of Chromium
     package = pkgs.brave;
 
     # Extensions to install
     extensions = [
-      # uBlock Origin
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm"
-
-      # Dark Reader
-      "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-
-      # Bitwarden
-      "nngceckbapebfimnlniiiahkandclblb"
-
-      # Catppuccin for all web apps
-      "bannabikokecfpeikmgecflljpaaijdb"
-
-      # Privacy Badger
-      "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
-
-      # HTTPS Everywhere
-      "gcbommkclmclpchllfjekcdonpmejbdp"
-
-      # Vimium
-      "dbepggeogbaibhgnhhndojpepiihcmeb"
-
-      # JSON Formatter
-      "bcjindcccaagfpapjjmafapmmgkkhgoa"
-
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
+      { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+      { id = "bannabikokecfpeikmgecflljpaaijdb"; } # Catppuccin for all web apps
+      { id = "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"; } # Privacy Badger
+      { id = "gcbommkclmclpchllfjekcdonpmejbdp"; } # HTTPS Everywhere
+      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium
+      { id = "bcjindcccaagfpapjjmafapmmgkkhgoa"; } # JSON Formatter
     ];
+
+    # Command line arguments
+    commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
   };
 }

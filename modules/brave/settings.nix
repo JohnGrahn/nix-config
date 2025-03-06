@@ -2,7 +2,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Configure Brave through Home Manager's Chromium module - settings section
+  # Configure Brave through Chromium module
   programs.chromium = {
     # Browser settings
     extraOpts = {
