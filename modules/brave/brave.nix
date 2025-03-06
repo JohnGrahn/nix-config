@@ -2,8 +2,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Configure Brave through Chromium module
-  programs.chromium = {
+  # Configure Brave browser
+  programs.brave = {
     enable = true;
     package = pkgs.brave;
 
