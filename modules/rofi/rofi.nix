@@ -23,8 +23,8 @@
       sidebar-mode = true;
     };
 
-    # Catppuccin Mocha theme
-    theme = ./theme.rasi;
+    # Catppuccin Mocha theme - use the generated config file
+    theme = "${config.xdg.configHome}/rofi/theme.rasi";
   };
 
   # Create the Catppuccin Mocha theme file for Rofi
