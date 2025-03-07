@@ -1,0 +1,128 @@
+/* Catppuccin Mocha Theme */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #1e1e2e;
+    color: #cdd6f4;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #cdd6f4;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.active {
+    background: #313244;
+    border-bottom: 3px solid #cba6f7;
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8;
+}
+
+#workspaces button:hover {
+    background: #313244;
+    border-bottom: 3px solid #cdd6f4;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+#clock {
+    background-color: #313244;
+    color: #cba6f7;
+    border-radius: 10px;
+}
+
+#battery {
+    background-color: #313244;
+    color: #a6e3a1;
+    border-radius: 10px;
+}
+
+#battery.charging, #battery.plugged {
+    color: #a6e3a1;
+    background-color: #313244;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #cdd6f4;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #cdd6f4;
+        color: #f38ba8;
+    }
+}
+
+#cpu {
+    background-color: #313244;
+    color: #89b4fa;
+    border-radius: 10px;
+}
+
+#memory {
+    background-color: #313244;
+    color: #f9e2af;
+    border-radius: 10px;
+}
+
+#temperature {
+    background-color: #313244;
+    color: #f5c2e7;
+    border-radius: 10px;
+}
+
+#temperature.critical {
+    background-color: #f38ba8;
+}
+
+#network {
+    background-color: #313244;
+    color: #94e2d5;
+    border-radius: 10px;
+}
+
+#network.disconnected {
+    background-color: #f38ba8;
+}
+
+#pulseaudio {
+    background-color: #313244;
+    color: #fab387;
+    border-radius: 10px;
+}
+
+#pulseaudio.muted {
+    background-color: #313244;
+    color: #6c7086;
+}
+
+#tray {
+    background-color: #313244;
+    border-radius: 10px;
+} 
