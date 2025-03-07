@@ -69,8 +69,8 @@
   # Disable PulseAudio
   hardware.pulseaudio.enable = false;
 
-  # Enable hardware.alsa for user space configuration
-  hardware.alsa.enable = true;
+  # ALSA is managed by PipeWire
+  hardware.alsa.enable = false;
 
   # Enable PipeWire
   services.pipewire = {
