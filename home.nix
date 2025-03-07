@@ -85,7 +85,6 @@
     EDITOR = "nvim";
     # Ensure qt apps use wayland
     QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
     # Force firefox to use wayland
     MOZ_ENABLE_WAYLAND = "1";
   };
