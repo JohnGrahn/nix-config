@@ -9,6 +9,15 @@
     # Catppuccin Mocha theme settings for Kitty terminal
     theme = "Catppuccin-Mocha";
 
+    # Keyboard shortcuts
+    keybindings = {
+      "ctrl+shift+v" = "paste_from_clipboard";
+      "ctrl+shift+c" = "copy_to_clipboard";
+      "ctrl+shift+equal" = "change_font_size all +1.0";
+      "ctrl+shift+minus" = "change_font_size all -1.0";
+      "ctrl+shift+backspace" = "change_font_size all 0";
+    };
+
     # Basic settings
     settings = {
       # Font configuration
@@ -48,15 +57,6 @@
       open_url_with = "default";
       url_prefixes = "http https file ftp gemini irc gopher mailto news git";
       detect_urls = "yes";
-
-      # Keyboard mapping
-      map = {
-        "ctrl+shift+v" = "paste_from_clipboard";
-        "ctrl+shift+c" = "copy_to_clipboard";
-        "ctrl+shift+equal" = "change_font_size all +1.0";
-        "ctrl+shift+minus" = "change_font_size all -1.0";
-        "ctrl+shift+backspace" = "change_font_size all 0";
-      };
 
       # Performance settings
       repaint_delay = "10";
