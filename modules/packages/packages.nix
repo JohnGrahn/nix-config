@@ -79,7 +79,10 @@
     curl
 
     # Fonts
-    nerdfonts # Includes JetBrains Mono, Fira Code, etc.
+    # nerdfonts # Includes JetBrains Mono, Fira Code, etc.
+    # Note: nerdfonts has been separated into individual packages
+    nerd-fonts.jetbrainsmono
+    nerd-fonts.firacode
 
     # Theme
     catppuccin-gtk

@@ -39,7 +39,9 @@
       noto-fonts-emoji
       jetbrains-mono
       fira-code
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+      # (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+      nerd-fonts.jetbrainsmono
+      nerd-fonts.firacode
     ];
     fontconfig = {
       defaultFonts = {
