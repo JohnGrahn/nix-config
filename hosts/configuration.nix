@@ -65,9 +65,12 @@
   services.xserver.xkb.layout = "us";
 
   # Enable sound with PipeWire
-  sound.enable = true;
+  # sound.enable = true; # This option no longer has any effect
   # Disable PulseAudio
   hardware.pulseaudio.enable = false;
+
+  # Enable hardware.alsa for user space configuration
+  hardware.alsa.enable = true;
 
   # Enable PipeWire
   services.pipewire = {
@@ -154,16 +157,20 @@
   # System version, do not change unless you know what you are doing
   system.stateVersion = "23.11"; # Did you read the comment?
 
+  # Define root filesystem for bootup
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+  };
+
   # PipeWire daemon optimization for low latency
-  environment.etc = {
-    "pipewire/pipewire.conf.d/90-low-latency.conf".text = ''
-      context.properties = {
-        default.clock.rate = 48000
-        default.clock.quantum = 32
-        default.clock.min-quantum = 32
-        default.clock.max-quantum = 32
-      }
-    '';
+  services.pipewire.extraConfig.pipewire = {
+    "context.properties" = {
+      "default.clock.rate" = 48000;
+      "default.clock.quantum" = 32;
+      "default.clock.min-quantum" = 32;
+      "default.clock.max-quantum" = 32;
+    };
   };
 
   # Bluetooth support for audio devices
