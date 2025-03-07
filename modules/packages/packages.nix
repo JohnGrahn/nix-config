@@ -34,7 +34,7 @@
     fzf # Fuzzy finder
     jq # JSON processor
     bat # Better cat
-    exa # Better ls
+    eza # Better ls (formerly exa)
     zoxide # Directory jumper (z command)
 
     # Clipboard manager
