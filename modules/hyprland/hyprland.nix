@@ -46,7 +46,7 @@
     wf-recorder # Screen recording
 
     # Login utilities
-    polkit-kde-agent
+    kdePackages.polkit-kde-agent
 
     # Audio/Media control 
     pamixer # Pulse Audio command line mixer
