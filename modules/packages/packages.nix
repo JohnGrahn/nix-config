@@ -81,8 +81,8 @@
     # Fonts
     # nerdfonts # Includes JetBrains Mono, Fira Code, etc.
     # Note: nerdfonts has been separated into individual packages
-    nerd-fonts.jetbrainsmono
-    nerd-fonts.firacode
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
 
     # Theme
     catppuccin-gtk

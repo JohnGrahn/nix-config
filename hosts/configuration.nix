@@ -40,8 +40,8 @@
       jetbrains-mono
       fira-code
       # (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
-      nerd-fonts.jetbrainsmono
-      nerd-fonts.firacode
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
     ];
     fontconfig = {
       defaultFonts = {
